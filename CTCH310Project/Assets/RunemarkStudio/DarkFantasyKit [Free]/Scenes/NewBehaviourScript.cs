@@ -65,15 +65,6 @@ public class NewBehaviourScript : MonoBehaviour
             transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
         }
-        //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-
-        // First try at moving camera with mouse
-
-        // float h = Input.GetAxis("Mouse X");
-        //float v = Input.GetAxis("Mouse Y");
-
-        //   transform.Rotate(90, h, 0);
-         //   transform.Rotate(-90, h, 0);
 
     }
     }
