@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public float speedH = 2.0f;
+    public float speedV = 2.0f;
+
+    private float yaw = 0.0f;
+    private float pitch = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,23 +47,33 @@ public class NewBehaviourScript : MonoBehaviour
             transform.Translate(0.1f, 0f, 0f);
         }
 
-        float h = Input.GetAxis("Mouse X");
-        float v = Input.GetAxis("Mouse Y");
+        yaw += speedH * Input.GetAxis("Mouse X");
+        pitch -= speedV * Input.GetAxis("Mouse Y");
 
-        if(v > 90)
+        if(Input.GetAxis("Mouse Y") > 90.0f)
         {
-            transform.Rotate(90, h, 0);
+            transform.eulerAngles = new Vector3(90.0f, yaw, 0.0f);
         }
 
-        else if (v < -90)
+         else if(Input.GetAxis("Mouse Y") < -90.0f)
         {
-            transform.Rotate(-90, h, 0);
-        }
+            transform.eulerAngles = new Vector3(-90.0f, yaw, 0.0f);
 
+        }
         else
         {
-            transform.Rotate(-v, h, 0);
+            transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
         }
+        //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
+        // First try at moving camera with mouse
+
+        // float h = Input.GetAxis("Mouse X");
+        //float v = Input.GetAxis("Mouse Y");
+
+        //   transform.Rotate(90, h, 0);
+         //   transform.Rotate(-90, h, 0);
 
     }
     }
