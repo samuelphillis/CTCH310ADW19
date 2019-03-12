@@ -11,12 +11,12 @@ public class ogre : MonoBehaviour
 
     void Greet()
     {
-        if(getSmart == true)
+        if (getSmart == true && intel <6)
         {
-            intel+= 1;
+            intel = intel + 1;
         }
-
-        if(getDumb == true)
+        
+        if (getDumb == true && intel > 0)
         {
             intel = intel - 1;
         }
@@ -48,36 +48,37 @@ public class ogre : MonoBehaviour
                 break;
         }
 
-        getDumb = false;
-        getSmart = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Greet();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        Check();
+
+        getDumb = false;
+        getSmart = false;
+    }
+
+    void Check()
+    {
+        if (Input.GetKeyUp(KeyCode.R))
         {
             getSmart = true;
         }
 
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             getDumb = true;
         }
 
-        if(getSmart == true)
-        {
-            Greet();
-        }
-
-        if(getDumb == true)
+        if (getSmart == true || getDumb == true)
         {
             Greet();
         }
