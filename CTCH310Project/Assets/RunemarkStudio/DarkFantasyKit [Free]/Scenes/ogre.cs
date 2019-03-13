@@ -11,7 +11,7 @@ public class ogre : MonoBehaviour
 
     void Greet()
     {
-        if (getSmart == true && intel <6)
+        if (getSmart == true && intel <5)
         {
             intel = intel + 1;
         }
